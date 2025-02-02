@@ -5,14 +5,14 @@ import (
 )
 
 type Task struct {
-  Title string
+  Title       string
   Description string
   DateCreated time.Time 
-  Status Status 
+  Status      Status 
 }
 
 type Status struct {
   NotStarted string
   InProgress string
-  Completed string
+  Completed  string
 }

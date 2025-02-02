@@ -4,7 +4,7 @@ import (
   "log"
   "fmt"
   "github.com/xyzcv979/todo-cli/types"
-  "github.com/spf13/cobra"
+  "github.com/xyzcv979/todo-cli/cobra-cli/cmd"
 )
 
 func main() {
@@ -13,4 +13,6 @@ func main() {
 
   firstTask := types.Task{}
   fmt.Println(firstTask)
+
+	cmd.Execute()
 }
