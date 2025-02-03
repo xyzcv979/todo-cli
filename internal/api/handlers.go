@@ -1,31 +1,32 @@
 package api
 
-import (
-  "github.com/xyzcv979/todo-cli/types"
-)
 
-func CreateTaskHandler(task types.Task) error {
+func CreateUserHandler() error {
+  	
+	return nil
+}
+
+func CreateTaskHandler(userId int) error {
   // Validate the request if needed
-
   // Process the request 
-  
+	 
 
   // Return the response
   return nil
 }
 
-func UpdateTaskHandler() {
+func UpdateTaskHandler(userId int, taskId int) {
 
 }
 
-func DeleteTaskHandler() {
+func DeleteTaskHandler(userId int, taskId int) {
 
 }
 
-func DescribeTaskHandler() {
+func DescribeTaskHandler(userId int, taskId int) {
 
 }
 
-func ListTasksHandler() {
+func ListTasksHandler(userId int) {
 
 }
