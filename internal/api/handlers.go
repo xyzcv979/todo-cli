@@ -1,32 +1,62 @@
 package api
 
-
-func CreateUserHandler() error {
-  	
-	return nil
+import (
+	"net/http"
+)
+// Middleware to check if the user is authenticated
+func isAuthenticated(r *http.Request) bool {
+	session, r := store.Get(r, "session")
+	authenticated, ok := session.Values["authenticated"].(bool)
+	return ok && authenticated
 }
 
-func CreateTaskHandler(userId int) error {
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	
+}
+
+func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
+	if !isAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}	  	
+}
+
+func CreateTaskHandler(w http.ResponseWriter, r *http.Request) {
   // Validate the request if needed
+	if !isAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
   // Process the request 
 	 
 
   // Return the response
-  return nil
 }
 
-func UpdateTaskHandler(userId int, taskId int) {
-
+func UpdateTaskHandler(w http.ResponseWriter, r *http.Request) {
+	if !isAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
 }
 
-func DeleteTaskHandler(userId int, taskId int) {
-
+func DeleteTaskHandler(w http.ResponseWriter, r *http.Request) {
+	if !isAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
 }
 
-func DescribeTaskHandler(userId int, taskId int) {
-
+func DescribeTaskHandler(w http.ResponseWriter, r *http.Request) {
+	if !isAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
 }
 
-func ListTasksHandler(userId int) {
-
+func ListTasksHandler(w http.ResponseWriter, r *http.Request) {
+	if !isAuthenticated(r) {
+		http.Redirect(w, r, "/login", http.StatusFound)
+		return
+	}
 }

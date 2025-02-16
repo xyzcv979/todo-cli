@@ -3,7 +3,6 @@ package main
 import (
   "log"
   "fmt"
-  "github.com/xyzcv979/todo-cli/types"
   "github.com/xyzcv979/todo-cli/cobra-cli/cmd"
 )
 

@@ -5,7 +5,6 @@ import (
   "time"
 )
 
-
 type User struct {
 	userId   int
 	userName int
