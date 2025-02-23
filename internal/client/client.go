@@ -1,11 +1,12 @@
 package main
 
 import (
-	"log"
-	"net/http/cookiejar"
-	"net/http"
-	"fmt"
 	"bytes"
+	"fmt"
+	"log"
+	"net/http"
+	"net/http/cookiejar"
+	"github.com/xyzcv979/todo-cli/internal"
 )
 
 func main() {
@@ -20,11 +21,11 @@ func main() {
 		Jar: jar, // Enable the cookie jar for storing cookies
 	}
 
-	// Step 1: Login
+	// Step 1: Create login request
 	username := "admin"
 	// password := "password"
 	loginData := fmt.Sprintf("username=%s", username)
-	loginRequest, err := http.NewRequest(http.MethodPost, "http://localhost:8080/login", bytes.NewBufferString(loginData))
+	loginRequest, err := http.NewRequest(http.MethodPost, internal.ServerURL + "/login", bytes.NewBufferString(loginData))
 	if err != nil {
 		log.Fatalf("Failed to create login request: %v", err)
 	}
@@ -47,9 +48,9 @@ func main() {
 		}
 	}
 	if !isAuthenticated {
-		log.Fatalln("User failed authentication")
+		log.Fatalf("%s failed authentication", username)
 	}
+	log.Printf("%s authenticated successfully", username)
 
 	// Step 4: Access endpoints as authenticated user
-
 }
