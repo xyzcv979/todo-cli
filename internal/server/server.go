@@ -3,11 +3,12 @@ package main
 import (
 	"log"
   "github.com/xyzcv979/todo-cli/internal/api"
+	"github.com/xyzcv979/todo-cli/internal"
 	"net/http"
 )
 
 func main() {
-	log.Println("server running on http:localhost:8081")
+	log.Printf("server running on %s", internal.ServerURL)
 	
 	http.HandleFunc("/login", api.LoginHandler)
 	http.HandleFunc("/createuser", api.CreateUserHandler)
@@ -17,5 +18,6 @@ func main() {
 	http.HandleFunc("/describetask", api.DescribeTaskHandler)
 	http.HandleFunc("/listtask", api.ListTasksHandler)
 
-	log.Fatalln(http.ListenAndServe(":8080", nil))
+	log.Print("Listening...")
+	log.Fatalln(http.ListenAndServe(internal.ServerPort, nil))
 }
